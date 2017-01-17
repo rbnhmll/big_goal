@@ -31,7 +31,10 @@
 	* Goal Date/time
 	* Extended?
 	* Complete?
+* Default Messages
+	* Message
 * Custom Messages
+	* Message
 	* Include custom message?
 
 ##Controller#actions:
