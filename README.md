@@ -22,41 +22,47 @@
 	* Once your main goal is complete, you can add a new one.
 
 ##Models:
-* admin
+* __admin__
 	has\_many :default\_messages
 
-* user
+* __user__
 	has_one :profile
 	has_many :goals
 	has\_many :custom_messages
 	* email
 
-* profile
+* __profile__
+	belongs_to :user
 	* name (perhaps multiple names that you like to be called/nicknames)
 
-* goal
+* __goal__
 	belongs\_to :user
 	* goal_name
 	* deadline
 	* deadline\_extended?
 	* complete?
 
-* default_message
-	* belongs\_to :admin
+* __default_message__
+	belongs\_to :admin
 	* message
 
-* custom_message
-	* belongs\_to :user
+* __custom_message__
+	belongs\_to :user
 	* message
 	* include\_custom\_messages?
 
 ##Controller#actions:
-* profile
+* __profile__
 	* Full CRUD
 
-* goal
+* __goal__
 	* Full CRUD
-	* Index (List of current and past goals, with stats).
+	* Index (List of user's current and past goals, with stats).
 
-* custom_message
+* __default_message__
 	* Full CRUD
+	* Available only to :admin
+
+* __custom_message__
+	* Full CRUD
+	* Available only to :user
