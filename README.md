@@ -19,8 +19,7 @@
 * Message when the timer runs out.
 * Button to add one more day/week, and a comforting message to follow.
 	* Maybe this can only be done once.
-
-##Once your main goal is complete, you can add a new one.
+	* Once your main goal is complete, you can add a new one.
 
 ##Models:
 * User
