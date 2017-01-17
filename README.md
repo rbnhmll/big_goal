@@ -29,27 +29,28 @@
 	has_one :profile,
 	has_many :goals,
 	has\_many :custom_messages
-	* email
+	* email												:string
 
 * __profile__
 	belongs_to :user
-	* name (perhaps multiple names that you like to be called/nicknames)
+	* name												:string
+	* nickname										:string
+	* include\_custom\_messages?	:boolean
 
 * __goal__
 	belongs\_to :user
-	* goal_name
-	* deadline
-	* deadline\_extended?
-	* complete?
+	* goal_name										:string
+	* deadline										:datetime
+	* deadline\_extended?					:boolean
+	* complete?										:boolean
 
 * __default_message__
 	belongs\_to :admin
-	* message
+	* message											:string
 
 * __custom_message__
 	belongs\_to :user
-	* message
-	* include\_custom\_messages?
+	* message											:string
 
 ##Controller#actions:
 * __profile__
