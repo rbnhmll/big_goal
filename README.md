@@ -26,8 +26,8 @@
 	has\_many :default\_messages
 
 * __user__
-	has_one :profile
-	has_many :goals
+	has_one :profile,
+	has_many :goals,
 	has\_many :custom_messages
 	* email
 
