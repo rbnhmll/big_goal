@@ -1,4 +1,4 @@
-class AddUserIdToProfiles < ActiveRecord::Migration[5.0]
+class AddAssociationsToTables < ActiveRecord::Migration[5.0]
   def up
   	add_column :profiles, :user_id, :integer
   	add_column :goals, :user_id, :integer
