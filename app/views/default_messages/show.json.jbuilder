@@ -1,0 +1,1 @@
+json.partial! "default_messages/default_message", default_message: @default_message

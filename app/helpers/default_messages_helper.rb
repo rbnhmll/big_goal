@@ -1,0 +1,2 @@
+module DefaultMessagesHelper
+end

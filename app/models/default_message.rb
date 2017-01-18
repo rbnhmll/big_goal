@@ -1,0 +1,2 @@
+class DefaultMessage < ApplicationRecord
+end

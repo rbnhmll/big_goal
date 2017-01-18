@@ -1,0 +1,1 @@
+json.array! @default_messages, partial: 'default_messages/default_message', as: :default_message
