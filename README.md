@@ -38,6 +38,8 @@
 	* nickname										:string
 	* include\_custom\_messages		:boolean
 
+	* user_id											:integer
+
 * __goal__
 	belongs\_to :user
 	* goal_name										:string
@@ -45,13 +47,19 @@
 	* deadline\_extended					:boolean
 	* complete										:boolean
 
+	* user_id											:integer
+
 * __default_message__
 	belongs\_to :admin
 	* message											:string
 
+	* user_id											:integer
+
 * __custom_message__
 	belongs\_to :user
 	* message											:string
+
+	* user_id											:integer
 
 ###Controller#actions:
 * __profile__
