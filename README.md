@@ -53,7 +53,7 @@
 	belongs\_to :admin
 	* message											:string
 
-	* user_id											:integer
+	* admin_id										:integer
 
 * __custom_message__
 	belongs\_to :user
