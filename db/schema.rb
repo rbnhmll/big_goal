@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170118192120) do
+ActiveRecord::Schema.define(version: 20170118193443) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20170118192120) do
 
   create_table "goals", force: :cascade do |t|
     t.string   "goal_name"
-    t.datetime "dealine"
+    t.datetime "deadline"
     t.boolean  "deadline_extended"
     t.boolean  "complete"
     t.datetime "created_at",        null: false
