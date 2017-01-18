@@ -1,0 +1,1 @@
+json.partial! "custom_messages/custom_message", custom_message: @custom_message

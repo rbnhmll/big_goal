@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :custom_messages
   resources :default_messages
   resources :goals
   resources :profiles

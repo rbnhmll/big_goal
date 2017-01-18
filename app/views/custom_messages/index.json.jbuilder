@@ -1,0 +1,1 @@
+json.array! @custom_messages, partial: 'custom_messages/custom_message', as: :custom_message

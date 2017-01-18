@@ -1,0 +1,2 @@
+class CustomMessage < ApplicationRecord
+end
