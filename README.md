@@ -36,14 +36,14 @@
 	belongs_to :user
 	* name												:string
 	* nickname										:string
-	* include\_custom\_messages?	:boolean
+	* include\_custom\_messages		:boolean
 
 * __goal__
 	belongs\_to :user
 	* goal_name										:string
 	* deadline										:datetime
-	* deadline\_extended?					:boolean
-	* complete?										:boolean
+	* deadline\_extended					:boolean
+	* complete										:boolean
 
 * __default_message__
 	belongs\_to :admin
