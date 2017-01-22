@@ -11,6 +11,17 @@
   <body>
   	<!-- <p class="notice"><%= notice %></p> -->
     <!-- <p class="alert"><%= alert %></p> -->
+    <nav>
+      <% if admin_signed_in? %>
+        <%= link_to('Logout Admin', destroy_admin_session_path, :method => :delete) %>
+      <% end %>
+
+      <% if user_signed_in? %>
+        <%= link_to('Logout User', destroy_user_session_path, :method => :delete) %>
+      <% else %>
+        <%= link_to('Login User', new_user_session_path)  %> 
+      <% end %>
+    </nav>
     <%= yield %>
   </body>
 </html>
