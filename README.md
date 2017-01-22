@@ -77,10 +77,11 @@
 	* Full CRUD
 	* Available only to :user
 
-###Views
+###Views access
 * User
 	* Mainpage - Goals#show
 	* CustomMessage => Full CRUD
 * Admin
+	* Single Admin access
 	* Users#Index
 	* DefaultMessage => Full CRUD
