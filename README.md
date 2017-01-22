@@ -79,6 +79,8 @@
 
 ###Views
 * User
-	* 
+	* Mainpage - Goals#show
+	* CustomMessage => Full CRUD
 * Admin
 	* Users#Index
+	* DefaultMessage => Full CRUD
