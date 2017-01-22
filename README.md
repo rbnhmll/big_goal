@@ -76,3 +76,9 @@
 * __custom_message__
 	* Full CRUD
 	* Available only to :user
+
+###Views
+* User
+	* 
+* Admin
+	* Users#Index
