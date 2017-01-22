@@ -12,6 +12,7 @@
   	<!-- <p class="notice"><%= notice %></p> -->
     <!-- <p class="alert"><%= alert %></p> -->
     <nav>
+        <%= link_to('Home', root_path) %>
       <% if admin_signed_in? %>
         <%= link_to('Logout Admin', destroy_admin_session_path, :method => :delete) %>
       <% end %>
@@ -22,7 +23,7 @@
         <%= link_to('Login User', new_user_session_path)  %> 
       <% end %>
     </nav>
-    <section class="wrapper clearfix">
+    <section class="wrapper">
       <%= yield %>
     </section>
   </body>
