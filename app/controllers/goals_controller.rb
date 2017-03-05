@@ -1,6 +1,9 @@
 class GoalsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_goal, only: [:show, :edit, :update, :destroy]
+require 'action_view'
+include ActionView::Helpers::DateHelper
+
 
   def current_goal
     current_goal = current_user.goals.last.id
@@ -21,7 +24,6 @@ class GoalsController < ApplicationController
   # GET /goals/1
   # GET /goals/1.json
   def show
-    @expires_in = distance_of_time_in_words(@goal.deadline)
   end
 
   # GET /goals/new

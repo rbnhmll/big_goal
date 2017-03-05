@@ -11,6 +11,11 @@
 </p>
 
 <p>
+	<strong>Expires in:</strong>
+	<%= distance_of_time_in_words(Time.now, @goal.deadline) %>
+</p>
+
+<p>
   <strong>Deadline extended:</strong>
   <%= @goal.deadline_extended %>
 </p>
