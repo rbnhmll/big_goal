@@ -27,7 +27,6 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  gem 'better_errors', '~> 2.1', '>= 2.1.1'
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
   gem 'sqlite3', '~> 1.3', '>= 1.3.13'
@@ -39,6 +38,8 @@ end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
+  gem 'better_errors', '~> 2.1', '>= 2.1.1'
+  gem 'binding_of_caller'
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.0.5'
   gem 'spring'

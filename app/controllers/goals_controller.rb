@@ -1,4 +1,5 @@
 class GoalsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_goal, only: [:show, :edit, :update, :destroy]
 
   # GET /goals
@@ -10,6 +11,7 @@ class GoalsController < ApplicationController
   # GET /goals/1
   # GET /goals/1.json
   def show
+    @current_goal = current_user.goals.last
   end
 
   # GET /goals/new
