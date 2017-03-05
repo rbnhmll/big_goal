@@ -21,6 +21,7 @@ class GoalsController < ApplicationController
   # GET /goals/1
   # GET /goals/1.json
   def show
+    @expires_in = distance_of_time_in_words(@goal.deadline)
   end
 
   # GET /goals/new

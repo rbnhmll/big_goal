@@ -12,12 +12,11 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
     <% @current_user_goals.each do |goal| %>
       <tr>
         <td><%= goal.goal_name %></td>
-        <td><%= goal.deadline %></td>
+        <td><%= goal.deadline.strftime("%A %B %d %Y@ %I:%M%p") %></td>
         <td><%= goal.deadline_extended %></td>
         <td><%= goal.complete %></td>
         <td><%= link_to 'Show', goal %></td>

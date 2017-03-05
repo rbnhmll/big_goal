@@ -78,6 +78,9 @@ GEM
     dotenv-rails (2.1.2)
       dotenv (= 2.1.2)
       railties (>= 3.2, < 5.1)
+    dotiw (3.1.1)
+      actionpack (>= 3)
+      i18n
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.9.17)
@@ -223,6 +226,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise (~> 4.2)
   dotenv-rails (~> 2.1, >= 2.1.2)
+  dotiw
   friendly_id (~> 5.1.0)
   google-analytics-rails (~> 1.1)
   jbuilder (~> 2.5)
