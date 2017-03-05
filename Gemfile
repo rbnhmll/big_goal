@@ -8,6 +8,7 @@ end
 gem 'coffee-rails', '~> 4.2'
 gem 'devise', '~> 4.2'
 gem 'dotenv-rails', '~> 2.1', '>= 2.1.2'
+gem 'friendly_id', '~> 5.1.0'
 gem 'google-analytics-rails', '~> 1.1'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'

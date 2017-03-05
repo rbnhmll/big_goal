@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   resources :profiles
   devise_for :admins, controllers: { registrations: "registrations"}
   devise_for :users
-  root to: "goals#show", :id => Goal.last.id
+  root to: "goals#current_goal"
 end
