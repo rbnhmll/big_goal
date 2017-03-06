@@ -5,7 +5,7 @@
   <%= @goal.goal_name %>
 </p>
 
-<p>
+<p class="dealine">
   <strong>Deadline:</strong>
   <%= @goal.deadline.strftime("%A %B %d %Y@ %I:%M%p") %>
 </p>
@@ -27,3 +27,24 @@
 
 <%= link_to 'Edit', edit_goal_path(@goal) %> |
 <%= link_to 'Back', goals_path %>
+
+<script>
+  var dealine = document.querySelector('.dealine');
+  var url = window.location.href + ".json";
+  var timeTo = 0;
+  axios.get(url)
+    .then(function (response) {
+      formatDeadline(response.data);
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+
+  function formatDeadline(data) {
+    var deadline = new Date(data.deadline).getTime();
+    var now =  Date.now();
+    timeTo = deadline - now;
+    console.log(timeTo);
+  }
+
+</script>

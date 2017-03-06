@@ -89,6 +89,6 @@ include ActionView::Helpers::DateHelper
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def goal_params
-      params.require(:goal).permit(:goal_name, :deadline, :deadline_extended, :complete, :current_goal)
+      params.require(:goal).permit(:goal_name, :deadline, :deadline_extended, :complete)
     end
 end
