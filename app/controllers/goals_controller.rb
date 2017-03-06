@@ -40,6 +40,12 @@ include ActionView::Helpers::DateHelper
   def create
     @goal = Goal.new(goal_params)
     @goal.user_id = current_user.id
+    c_goal = Goal.all.where(user_id: current_user.id, current_goal: true)
+    c_goal.each do |c|
+      c.current_goal = false
+      c.save
+    end
+    @goal.current_goal = true
     respond_to do |format|
       if @goal.save
         format.html { redirect_to @goal, notice: 'Goal was successfully created.' }
@@ -83,6 +89,6 @@ include ActionView::Helpers::DateHelper
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def goal_params
-      params.require(:goal).permit(:goal_name, :deadline, :deadline_extended, :complete)
+      params.require(:goal).permit(:goal_name, :deadline, :deadline_extended, :complete, :current_goal)
     end
 end
