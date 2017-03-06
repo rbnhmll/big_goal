@@ -1,6 +1,6 @@
 class GoalsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_goal, only: [:show, :edit, :update, :destroy]
+  before_action :set_goal, only: [:show, :edit, :update, :destroy, :complete_goal]
 require 'action_view'
 include ActionView::Helpers::DateHelper
 
@@ -11,7 +11,18 @@ include ActionView::Helpers::DateHelper
   end
 
   def complete_goal
-    
+    if !@goal.complete?
+      @goal.complete = true
+    end
+    respond_to do |format|
+      if @goal.save
+        format.html { redirect_to @goal, notice: 'Yay, you did it!!.' }
+        format.json { render :show, status: :ok, location: @goal }
+      else
+        format.html { render :edit }
+        format.json { render json: @goal.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # GET /goals

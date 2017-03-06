@@ -43,6 +43,8 @@
     </div>
   </div>
 
+  <%= link_to "Complete Goal", :controller => "goals", :action => "complete_goal", :id => @goal.id %>
+
   <%= link_to 'Edit', edit_goal_path(@goal) %> |
   <%= link_to 'Back', goals_path %>
 

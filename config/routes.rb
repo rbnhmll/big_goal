@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "/goals/:id/complete_goal", to: "goals#complete_goal"
+
   resources :custom_messages
   resources :default_messages
   resources :goals
