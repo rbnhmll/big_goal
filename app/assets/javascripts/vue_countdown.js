@@ -1,11 +1,17 @@
+Vue.component('countdown', {
+  template: '<p>Countdown</p>',
+  props: {
+  }
+});
+
 var app = new Vue({
   el: '#app',
   data: {
+    nowSeconds: Date.now(),
     secondsInDay: 86400,
     secondsInHour: 3600,
-    url: window.location.href + ".json",
     deadlineSecs: 0,
-    nowSeconds: Date.now()
+    url: window.location.href + ".json"
   },
   methods: {
     getNow: function() {

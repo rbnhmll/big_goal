@@ -1,6 +1,4 @@
 <div id="app">
-  <p id="notice"><%= notice %></p>
-
   <p>
     <strong>Goal name:</strong>
     <%= @goal.goal_name %>
@@ -25,11 +23,29 @@
     <strong>Complete:</strong>
     <%= @goal.complete %>
   </p>
-
-  Time left: {{ days }} days, {{ hours }} hours, {{ minutes }} minutes, {{ seconds }} seconds
+  
+  <div class="countdown">
+    <div class="time_block days">
+      <span>days</span>
+      <span>{{ days }}</span>
+    </div>
+    <div class="time_block hours">
+      <span>hours</span>
+      <span>{{ hours }}</span>
+    </div>
+    <div class="time_block minutes">
+      <span>minutes</span>
+      <span>{{ minutes }}</span>
+    </div>
+    <div class="time_block seconds">
+      <span>seconds</span>
+      <span>{{ seconds }}</span>
+    </div>
+  </div>
 
   <%= link_to 'Edit', edit_goal_path(@goal) %> |
   <%= link_to 'Back', goals_path %>
-</div> <!-- /#app -->
 
-<%= javascript_include_tag 'application', 'vue_clock': 'reload' %>
+
+</div> <!-- /#app -->
+<%= javascript_include_tag 'application', 'vue_countdown': 'reload' %>
