@@ -12,5 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require vue
 //= require axios
 //= require_tree .

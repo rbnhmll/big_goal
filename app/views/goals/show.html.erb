@@ -1,50 +1,83 @@
-<p id="notice"><%= notice %></p>
+<div id="app">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Goal name:</strong>
-  <%= @goal.goal_name %>
-</p>
+  <p>
+    <strong>Goal name:</strong>
+    <%= @goal.goal_name %>
+  </p>
 
-<p class="dealine">
-  <strong>Deadline:</strong>
-  <%= @goal.deadline.strftime("%A %B %d %Y@ %I:%M%p") %>
-</p>
+  <p class="dealine">
+    <strong>Deadline:</strong>
+    <%= @goal.deadline.strftime("%A %B %d %Y@ %I:%M%p") %>
+  </p>
 
-<p>
-	<strong>Expires in:</strong>
-	<%= distance_of_time_in_words(Time.now, @goal.deadline) %>
-</p>
+  <p>
+  	<strong>Expires in:</strong>
+  	<%= distance_of_time_in_words(Time.now, @goal.deadline) %>
+  </p>
 
-<p>
-  <strong>Deadline extended:</strong>
-  <%= @goal.deadline_extended %>
-</p>
+  <p>
+    <strong>Deadline extended:</strong>
+    <%= @goal.deadline_extended %>
+  </p>
 
-<p>
-  <strong>Complete:</strong>
-  <%= @goal.complete %>
-</p>
+  <p>
+    <strong>Complete:</strong>
+    <%= @goal.complete %>
+  </p>
 
-<%= link_to 'Edit', edit_goal_path(@goal) %> |
-<%= link_to 'Back', goals_path %>
+  Time left: {{ days }} days, {{ hours }} hours, {{ minutes }} minutes, {{ seconds }} seconds
+
+  <%= link_to 'Edit', edit_goal_path(@goal) %> |
+  <%= link_to 'Back', goals_path %>
+</div> <!-- /#app -->
 
 <script>
-  var dealine = document.querySelector('.dealine');
-  var url = window.location.href + ".json";
-  var timeTo = 0;
-  axios.get(url)
-    .then(function (response) {
-      formatDeadline(response.data);
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
-
-  function formatDeadline(data) {
-    var deadline = new Date(data.deadline).getTime();
-    var now =  Date.now();
-    timeTo = deadline - now;
-    console.log(timeTo);
-  }
-
+  var app = new Vue({
+    el: '#app',
+    data: {
+      secondsInDay: 86400,
+      url: window.location.href + ".json",
+      deadlineSecs: 0,
+      nowSeconds: Date.now()
+    },
+    methods: {
+      getNow: function() {
+        setInterval(function(){
+          app.nowSeconds = Date.now();
+          if (this.secondsLeft <= 0) {
+            clearInterval();
+          }
+        }, 1000);
+      }
+    },
+    computed: {
+      secondsLeft: function() {
+        return Math.round( (this.deadlineSecs - this.nowSeconds) / 1000 );
+      },
+      days: function() {
+        return Math.floor(this.secondsLeft / this.secondsInDay)
+      },
+      hours: function() {
+        return Math.floor( (this.secondsLeft % this.secondsInDay) / 60 / 60 );
+      },
+      minutes: function() {
+        return Math.floor( (this.secondsLeft % (60 * 60) ) / 60);
+      },
+      seconds: function() {
+        return Math.floor(this.secondsLeft % 60);
+      }
+    },
+    mounted: function() {
+      this.getNow();
+      axios.get(this.url)
+        .then(function (response) {
+          var data = response.data.deadline;
+          app.deadlineSecs = new Date(data).getTime();
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+    }
+  });
 </script>
