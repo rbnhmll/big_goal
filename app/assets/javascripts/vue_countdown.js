@@ -7,7 +7,8 @@ Vue.component('countdown', {
 var app = new Vue({
   el: '#app',
   data: {
-    nowSeconds: Date.now(),
+    nowSeconds: "",
+    offset: new Date().getTimezoneOffset()*60*1000,
     secondsInDay: 86400,
     secondsInHour: 3600,
     deadlineSecs: 0,
@@ -15,8 +16,9 @@ var app = new Vue({
   },
   methods: {
     getNow: function() {
+      this.nowSeconds = Date.now() - this.offset;
       setInterval(function(){
-        app.nowSeconds = Date.now();
+        app.nowSeconds = Date.now() - app.offset;
         if (this.secondsLeft <= 0) {
           clearInterval();
         }
