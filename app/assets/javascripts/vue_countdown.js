@@ -27,7 +27,8 @@ var app = new Vue({
   },
   computed: {
     secondsLeft: function() {
-      return Math.round( (this.deadlineSecs - this.nowSeconds) / 1000 );
+      var s = Math.round( (this.deadlineSecs - this.nowSeconds) / 1000 );
+      return s >= 0 ? s : 0;
     },
     days: function() {
       return Math.floor(this.secondsLeft / this.secondsInDay)

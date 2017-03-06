@@ -35,6 +35,7 @@ include ActionView::Helpers::DateHelper
   # GET /goals/1
   # GET /goals/1.json
   def show
+
   end
 
   # GET /goals/new
