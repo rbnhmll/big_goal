@@ -6,7 +6,7 @@
 
   <p class="dealine">
     <strong>Deadline:</strong>
-    <%= @goal.deadline.strftime("%A %B %d %Y@ %I:%M%p") %>
+    <%= @goal.deadline.strftime("%A %B %d %Y at %I:%M%p") %>
   </p>
 
   <p>
@@ -26,20 +26,20 @@
   
   <div class="countdown">
     <div class="time_block days">
-      <span>days</span>
       <span>{{ days }}</span>
+      <span>days</span>
     </div>
     <div class="time_block hours">
-      <span>hours</span>
       <span>{{ hours }}</span>
+      <span>hours</span>
     </div>
     <div class="time_block minutes">
-      <span>minutes</span>
       <span>{{ minutes }}</span>
+      <span>minutes</span>
     </div>
     <div class="time_block seconds">
-      <span>seconds</span>
       <span>{{ seconds }}</span>
+      <span>seconds</span>
     </div>
   </div>
   <% if !@goal.complete? %>

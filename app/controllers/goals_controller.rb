@@ -1,6 +1,8 @@
 class GoalsController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_goal, only: [:show, :edit, :update, :destroy, :complete_goal]
+  before_action :authenticate_user!
+  before_action :authenticate_has_profile
+
 require 'action_view'
 include ActionView::Helpers::DateHelper
 
