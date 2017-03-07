@@ -8,8 +8,12 @@ include ActionView::Helpers::DateHelper
 
 
   def current_goal
-    current_goal = current_user.goals.last.id
-    redirect_to goal_path(current_goal)
+    if current_user.goals.last.present?
+      current_goal = current_user.goals.last.id
+      redirect_to goal_path(current_goal)
+    else
+      redirect_to new_goal_path
+    end
   end
 
   def complete_goal
