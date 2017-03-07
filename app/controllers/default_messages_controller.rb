@@ -43,7 +43,7 @@ class DefaultMessagesController < ApplicationController
   def update
     respond_to do |format|
       if @default_message.update(default_message_params)
-        format.html { redirect_to @default_message, notice: 'Default message was successfully updated.' }
+        format.html { redirect_to default_messages_path, notice: 'Default message was successfully updated.' }
         format.json { render :show, status: :ok, location: @default_message }
       else
         format.html { render :edit }

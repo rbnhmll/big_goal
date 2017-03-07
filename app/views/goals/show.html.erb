@@ -49,7 +49,6 @@
     <%= link_to "Complete Goal", :controller => "goals", :action => "complete_goal", :id => @goal.id %>
   <% end %>
 
-
   <%= link_to 'Edit', edit_goal_path(@goal) %> |
   <%= link_to 'Back to Index', goals_path %>
 
@@ -72,6 +71,7 @@
       secondsInDay: 86400,
       secondsInHour: 3600,
       deadlineSecs: 0,
+      name: "",
       url: window.location.href + ".json"
     },
     methods: {
@@ -83,6 +83,10 @@
             clearInterval();
           }
         }, 1000);
+      },
+      randomName: function(name, nickname) {
+        var names = [name, nickname];
+        this.name = names[Math.floor(Math.random() * names.length)];
       }
     },
     computed: {
@@ -109,6 +113,19 @@
       .then(function (response) {
         var data = response.data.deadline;
         app.deadlineSecs = new Date(data).getTime();
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+
+      var protocol = window.location.protocol;
+      var host = window.location.host;
+      var profile_id = <%= current_user.profile.id %>;
+      axios.get(`${protocol}//${host}/profiles/${profile_id}.json`)
+      .then(function (response) {
+        var name = response.data.name;
+        var nickname = response.data.nickname;
+        app.randomName(name, nickname);
       })
       .catch(function (error) {
         console.error(error);
