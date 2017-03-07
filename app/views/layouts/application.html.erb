@@ -11,16 +11,19 @@
   <body>
     <header>
       <nav class="wrapper">
-          <%= link_to('Home', root_path) %>
+        <%= link_to('Home', root_path) %>
+
+        <% if user_signed_in? %>
+          <%= link_to('Logout User', destroy_user_session_path, :method => :delete) %>
+          <%= link_to('Messages', custom_messages_path) %>
+        <% else %>
+          <%= link_to('Login User', new_user_session_path)  %> 
+        <% end %>
+
         <% if admin_signed_in? %>
           <%= link_to('Logout Admin', destroy_admin_session_path, :method => :delete) %>
         <% end %>
       
-        <% if user_signed_in? %>
-          <%= link_to('Logout User', destroy_user_session_path, :method => :delete) %>
-        <% else %>
-          <%= link_to('Login User', new_user_session_path)  %> 
-        <% end %>
       </nav>
     </header>
   	<section class="alerts wrapper">
@@ -30,5 +33,11 @@
     <section class="wrapper">
       <%= yield %>
     </section>
+
+    <footer>
+      <div class="wrapper">
+        <p>&copy; Robin Hamill <%= Date.today.year %></p>
+      </div>
+    </footer>
   </body>
 </html>

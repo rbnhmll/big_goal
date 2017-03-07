@@ -46,7 +46,7 @@
     </div> <!-- /.countdown -->
     <% end %>
   <% unless @goal.complete? %>
-    <%= link_to "Complete Goal", :controller => "goals", :action => "complete_goal", :id => @goal.id, data: { confirm: 'Are you sure?' } %>
+    <%= link_to "Complete Goal", :controller => "goals", :action => "complete_goal", :id => @goal.id %>
   <% end %>
 
   <%= link_to 'Edit', edit_goal_path(@goal) %> |
