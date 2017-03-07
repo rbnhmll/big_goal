@@ -16,6 +16,7 @@
         <% if user_signed_in? %>
           <%= link_to('Logout User', destroy_user_session_path, :method => :delete) %>
           <%= link_to('Messages', custom_messages_path) %>
+          <%= link_to('Profile', profile_path(current_user.profile)) %>
         <% else %>
           <%= link_to('Login User', new_user_session_path)  %> 
         <% end %>

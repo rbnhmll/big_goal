@@ -1,18 +1,22 @@
 class GoalsController < ApplicationController
   before_action :set_goal, only: [:show, :edit, :update, :destroy, :complete_goal]
-  before_action :authenticate_user!
-  before_action :authenticate_has_profile
+  before_action :authenticate_user!, except: [:current_goal]
+  before_action :authenticate_has_profile, except: [:current_goal]
 
 require 'action_view'
 include ActionView::Helpers::DateHelper
 
 
   def current_goal
-    if current_user.goals.last.present?
-      current_goal = current_user.goals.last.id
-      redirect_to goal_path(current_goal)
-    else
-      redirect_to new_goal_path
+    if user_signed_in?
+      if current_user.goals.last.present?
+        current_goal = current_user.goals.last.id
+        redirect_to goal_path(current_goal)
+      else
+        redirect_to new_goal_path
+      end
+    elsif admin_signed_in?
+      redirect_to default_messages_path
     end
   end
 
@@ -40,7 +44,14 @@ include ActionView::Helpers::DateHelper
   # GET /goals/1
   # GET /goals/1.json
   def show
-
+    if current_user.profile.include_custom_messages?
+      default_messages = DefaultMessage.all
+      custom_messages = CustomMessage.where(user_id: current_user.id)
+      combined = default_messages + custom_messages
+      @random_message = combined.sample
+    else
+      @random_message = CustomMessage.where(user_id: current_user.id).order("RANDOM()").first
+    end
   end
 
   # GET /goals/new
