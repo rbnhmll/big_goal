@@ -1,10 +1,11 @@
 class CustomMessagesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_custom_message, only: [:show, :edit, :update, :destroy]
 
   # GET /custom_messages
   # GET /custom_messages.json
   def index
-    @custom_messages = CustomMessage.all
+    @custom_messages = CustomMessage.all.where(user_id: current_user.id)
   end
 
   # GET /custom_messages/1
@@ -25,7 +26,7 @@ class CustomMessagesController < ApplicationController
   # POST /custom_messages.json
   def create
     @custom_message = CustomMessage.new(custom_message_params)
-
+    @custom_message.user_id = current_user.id
     respond_to do |format|
       if @custom_message.save
         format.html { redirect_to @custom_message, notice: 'Custom message was successfully created.' }
