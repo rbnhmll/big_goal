@@ -5,7 +5,7 @@ class CustomMessagesController < ApplicationController
   # GET /custom_messages
   # GET /custom_messages.json
   def index
-    @custom_messages = CustomMessage.all.where(user_id: current_user.id)
+    @custom_messages = CustomMessage.where(user_id: current_user.id)
   end
 
   # GET /custom_messages/1

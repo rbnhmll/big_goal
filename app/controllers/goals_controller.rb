@@ -34,8 +34,7 @@ include ActionView::Helpers::DateHelper
   # GET /goals
   # GET /goals.json
   def index
-    goals = Goal.all.order(created_at: :desc)
-    @current_user_goals = goals.where(user_id: current_user.id)
+    @goals = Goal.where(user_id: current_user.id).order(created_at: :desc)
   end
 
   # GET /goals/1

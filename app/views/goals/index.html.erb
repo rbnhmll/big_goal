@@ -13,7 +13,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @current_user_goals.each do |goal| %>
+    <% @goals.each do |goal| %>
       <tr>
         <td><%= goal.goal_name %></td>
         <td><%= goal.deadline.strftime("%A %B %d %Y@ %I:%M%p") %></td>
