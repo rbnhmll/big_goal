@@ -23,27 +23,30 @@
     <strong>Complete:</strong>
     <%= @goal.complete %>
   </p>
-  
-  <div class="countdown">
-    <div class="time_block days">
-      <span>{{ days }}</span>
-      <span>days</span>
-    </div>
-    <div class="time_block hours">
-      <span>{{ hours }}</span>
-      <span>hours</span>
-    </div>
-    <div class="time_block minutes">
-      <span>{{ minutes }}</span>
-      <span>minutes</span>
-    </div>
-    <div class="time_block seconds">
-      <span>{{ seconds }}</span>
-      <span>seconds</span>
-    </div>
-  </div>
-  <% if !@goal.complete? %>
-    <%= link_to "Complete Goal", :controller => "goals", :action => "complete_goal", :id => @goal.id %>
+  <% if @goal.complete? %>
+    <h1>Congrats, you met your goal!!</h1>
+  <% else %>
+    <div class="countdown">
+      <div class="time_block days">
+        <span>{{ days }}</span>
+        <span>days</span>
+      </div>
+      <div class="time_block hours">
+        <span>{{ hours }}</span>
+        <span>hours</span>
+      </div>
+      <div class="time_block minutes">
+        <span>{{ minutes }}</span>
+        <span>minutes</span>
+      </div>
+      <div class="time_block seconds">
+        <span>{{ seconds }}</span>
+        <span>seconds</span>
+      </div>
+    </div> <!-- /.countdown -->
+    <% end %>
+  <% unless @goal.complete? %>
+    <%= link_to "Complete Goal", :controller => "goals", :action => "complete_goal", :id => @goal.id, data: { confirm: 'Are you sure?' } %>
   <% end %>
 
   <%= link_to 'Edit', edit_goal_path(@goal) %> |
