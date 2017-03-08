@@ -52,7 +52,11 @@
   <%= link_to 'Edit', edit_goal_path(@goal) %> |
   <%= link_to 'Back to Index', goals_path %>
 
-  <h1 class=""><%= @random_message.message %></h1>
+  <% if @random_message.present? %>
+    <h1 class=""><%= @random_message.message %></h1>
+  <% else %>
+    <h1>You got this, fam!</h1>
+  <% end %>
 
 </div> <!-- /#app -->
 

@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_one :profile, :dependent => :destroy
   has_many :goals, :dependent => :destroy
   has_many :custom_messages, :dependent => :destroy
+  has_many :default_messages, :dependent => :destroy
 end
