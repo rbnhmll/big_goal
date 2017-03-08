@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'axios_rails', '~> 0.7.0'
+gem 'bourbon'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise', '~> 4.2'
 gem 'dotenv-rails', '~> 2.1', '>= 2.1.2'

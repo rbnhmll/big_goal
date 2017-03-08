@@ -29,7 +29,7 @@ class CustomMessagesController < ApplicationController
     @custom_message.user_id = current_user.id
     respond_to do |format|
       if @custom_message.save
-        format.html { redirect_to @custom_message, notice: 'Custom message was successfully created.' }
+        format.html { redirect_to custom_messages_path, notice: 'Custom message was successfully created.' }
         format.json { render :show, status: :created, location: @custom_message }
       else
         format.html { render :new }

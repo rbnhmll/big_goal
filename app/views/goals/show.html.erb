@@ -1,4 +1,4 @@
-<div id="app">
+<div id="app" v-cloak >
   <p>
     <strong>Goal name:</strong>
     <%= @goal.goal_name %>
@@ -52,11 +52,13 @@
   <%= link_to 'Edit', edit_goal_path(@goal) %> |
   <%= link_to 'Back to Index', goals_path %>
 
-  <h1><%= @random_message.message %></h1>
+  <h1 class=""><%= @random_message.message %></h1>
 
 </div> <!-- /#app -->
 
 <script>
+  Vue.prototype.$http = axios;
+
   Vue.component('countdown', {
     template: '<p>Countdown</p>',
     props: {
@@ -109,7 +111,7 @@
     },
     mounted: function() {
       this.getNow();
-      axios.get(this.url)
+      this.$http.get(this.url)
       .then(function (response) {
         var data = response.data.deadline;
         app.deadlineSecs = new Date(data).getTime();
@@ -121,7 +123,7 @@
       var protocol = window.location.protocol;
       var host = window.location.host;
       var profile_id = <%= current_user.profile.id %>;
-      axios.get(`${protocol}//${host}/profiles/${profile_id}.json`)
+      this.$http.get(`${protocol}//${host}/profiles/${profile_id}.json`)
       .then(function (response) {
         var name = response.data.name;
         var nickname = response.data.nickname;

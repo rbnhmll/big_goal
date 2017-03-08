@@ -1,22 +1,15 @@
 class GoalsController < ApplicationController
   before_action :set_goal, only: [:show, :edit, :update, :destroy, :complete_goal]
-  before_action :authenticate_user!, except: [:current_goal]
-  before_action :authenticate_has_profile, except: [:current_goal]
+  before_action :authenticate_user!
+  before_action :authenticate_has_profile
 
 require 'action_view'
 include ActionView::Helpers::DateHelper
 
-
   def current_goal
-    if user_signed_in?
-      if current_user.goals.last.present?
-        current_goal = current_user.goals.last.id
-        redirect_to goal_path(current_goal)
-      else
-        redirect_to new_goal_path
-      end
-    elsif admin_signed_in?
-      redirect_to default_messages_path
+    if current_user.goals.last.present?
+      current_goal = current_user.goals.last.id
+      redirect_to goal_path(current_goal)
     end
   end
 
