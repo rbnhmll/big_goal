@@ -23,13 +23,11 @@
 	* Once your main goal is complete, you can add a new one.
 
 ###Models:
-* __admin__
-	has\_many :default\_messages
-
 * __user__
 	has_one :profile,
 	has_many :goals,
 	has\_many :custom_messages
+	has\_many :default\_messages
 	* email												:string
 
 * __profile__
@@ -53,7 +51,7 @@
 	belongs\_to :admin
 	* message											:string
 
-	* admin_id										:integer
+	* user_id											:integer
 
 * __custom_message__
 	belongs\_to :user
