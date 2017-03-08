@@ -16,9 +16,9 @@
     <%= f.text_field :goal_name %>
   </div>
 
-  <div class="field">
+  <div class="field dateTime">
     <%= f.label :deadline %>
-    <%= f.datetime_select :deadline %>
+    <%= f.datetime_select :deadline, :order => [:month, :day, :year, :hour, :minute], default: { hour: 12, minute: 0 }, :datetime_separator => "<span class='at'> at </span>", :time_separator => "<span class='at'> : </span>" %>
   </div>
   <!-- Only show if goal exists in DB, ie: edit view -->
   <% if goal.persisted? %>

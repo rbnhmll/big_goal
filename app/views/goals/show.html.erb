@@ -24,39 +24,40 @@
     <%= @goal.complete %>
   </p>
   <% if @goal.complete? %>
-    <h1>Congrats, you met your goal!!</h1>
+    <h1>🎉 Congrats, you met your goal {{name}}!!</h1>
   <% else %>
     <div class="countdown">
       <div class="time_block days">
-        <span>{{ days }}</span>
+        <span class="time">{{ days }}</span>
         <span>days</span>
       </div>
       <div class="time_block hours">
-        <span>{{ hours }}</span>
+        <span class="time">{{ hours }}</span>
         <span>hours</span>
       </div>
       <div class="time_block minutes">
-        <span>{{ minutes }}</span>
+        <span class="time">{{ minutes }}</span>
         <span>minutes</span>
       </div>
       <div class="time_block seconds">
-        <span>{{ seconds }}</span>
+        <span class="time">{{ seconds }}</span>
         <span>seconds</span>
       </div>
     </div> <!-- /.countdown -->
     <% end %>
   <% unless @goal.complete? %>
     <%= link_to "Complete Goal", :controller => "goals", :action => "complete_goal", :id => @goal.id %>
+    
+    <% if @random_message.present? %>
+      <h1 class=""><%= @random_message.message %></h1>
+    <% else %>
+      <h1>You got this, fam!</h1>
+    <% end %>
   <% end %>
 
   <%= link_to 'Edit', edit_goal_path(@goal) %> |
   <%= link_to 'Back to Index', goals_path %>
-
-  <% if @random_message.present? %>
-    <h1 class=""><%= @random_message.message %></h1>
-  <% else %>
-    <h1>You got this, fam!</h1>
-  <% end %>
+  
 
 </div> <!-- /#app -->
 
