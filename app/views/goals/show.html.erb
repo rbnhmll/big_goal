@@ -90,8 +90,7 @@
           }
         }, 1000);
       },
-      randomName: function(name, nickname) {
-        var names = [name, nickname];
+      randomName: function(names) {
         this.name = names[Math.floor(Math.random() * names.length)];
       }
     },
@@ -131,7 +130,11 @@
       .then(function (response) {
         var name = response.data.name;
         var nickname = response.data.nickname;
-        app.randomName(name, nickname);
+        var names = [name];
+        if (nickname !== "") {
+          names.push(nickname);
+        }
+        app.randomName(names);
       })
       .catch(function (error) {
         console.error(error);

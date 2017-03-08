@@ -11,7 +11,7 @@ include ActionView::Helpers::DateHelper
       current_goal = current_user.goals.last.id
       redirect_to goal_path(current_goal)
     else
-      redirect_to new_goal_path
+      redirect_to new_goal_path, notice: 'Please create your first goal.'
     end
   end
 
