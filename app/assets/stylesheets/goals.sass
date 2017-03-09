@@ -18,16 +18,26 @@
 
 .countdown
 	display: flex
-	justify-content: space-between
+
+.countdown__card
+	display: flex
+	justify-content: center
+	background: $white
+	margin: auto
+	border-radius: 4px
+	padding: 20px
 
 .timeBlock
-	background: #fff
 	align-items: center
-	border: 1px solid black
 	border-radius: 10px
 	display: flex
 	font-size: 50px
 	flex-direction: column
-	height: 200px
 	justify-content: center
 	width: 200px
+	line-height: 1.2
+	.time
+		font-size: 100px
+		text-shadow: 0.25rem -0.25rem rgba(255,0,255,0.75), -0.25rem -0.25rem rgba(0,255,255,0.75), 0 0.5rem rgba(255,193,7,0.75)
+	.unit
+		font-size: 25px		

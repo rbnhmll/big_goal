@@ -6,21 +6,23 @@
     <h2>🎉 Congrats, you met your goal {{name}}!!</h2>
   <% else %>
     <div class="countdown">
-      <div class="timeBlock days">
-        <span class="time">{{ days }}</span>
-        <span>days</span>
-      </div>
-      <div class="timeBlock hours">
-        <span class="time">{{ hours }}</span>
-        <span>hours</span>
-      </div>
-      <div class="timeBlock minutes">
-        <span class="time">{{ minutes }}</span>
-        <span>minutes</span>
-      </div>
-      <div class="timeBlock seconds">
-        <span class="time">{{ seconds }}</span>
-        <span>seconds</span>
+      <div class="countdown__card">
+        <div class="timeBlock days">
+          <span class="time">{{ days }}</span>
+          <span class="unit">days</span>
+        </div>
+        <div class="timeBlock hours">
+          <span class="time">{{ hours }}</span>
+          <span class="unit">hours</span>
+        </div>
+        <div class="timeBlock minutes">
+          <span class="time">{{ minutes }}</span>
+          <span class="unit">minutes</span>
+        </div>
+        <div class="timeBlock seconds">
+          <span class="time">{{ seconds }}</span>
+          <span class="unit">seconds</span>
+        </div>
       </div>
     </div> <!-- /.countdown -->
     <% end %>
