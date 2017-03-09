@@ -1,16 +1,11 @@
 class CustomMessagesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_custom_message, only: [:show, :edit, :update, :destroy]
+  before_action :set_custom_message, only: [:edit, :update, :destroy]
 
   # GET /custom_messages
   # GET /custom_messages.json
   def index
     @custom_messages = CustomMessage.where(user_id: current_user.id)
-  end
-
-  # GET /custom_messages/1
-  # GET /custom_messages/1.json
-  def show
   end
 
   # GET /custom_messages/new
@@ -30,7 +25,7 @@ class CustomMessagesController < ApplicationController
     respond_to do |format|
       if @custom_message.save
         format.html { redirect_to custom_messages_path, notice: 'Custom message was successfully created.' }
-        format.json { render :show, status: :created, location: @custom_message }
+        format.json { render :index, status: :created, location: @custom_message }
       else
         format.html { render :new }
         format.json { render json: @custom_message.errors, status: :unprocessable_entity }
@@ -44,7 +39,7 @@ class CustomMessagesController < ApplicationController
     respond_to do |format|
       if @custom_message.update(custom_message_params)
         format.html { redirect_to @custom_message, notice: 'Custom message was successfully updated.' }
-        format.json { render :show, status: :ok, location: @custom_message }
+        format.json { render :index, status: :ok, location: @custom_message }
       else
         format.html { render :edit }
         format.json { render json: @custom_message.errors, status: :unprocessable_entity }

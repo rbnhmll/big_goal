@@ -1,17 +1,12 @@
 class DefaultMessagesController < ApplicationController
   before_action :authenticate_user!
   before_action :authenticate_is_admin!
-  before_action :set_default_message, only: [:show, :edit, :update, :destroy]
+  before_action :set_default_message, only: [:edit, :update, :destroy]
 
   # GET /default_messages
   # GET /default_messages.json
   def index
     @default_messages = DefaultMessage.all
-  end
-
-  # GET /default_messages/1
-  # GET /default_messages/1.json
-  def show
   end
 
   # GET /default_messages/new
@@ -31,7 +26,7 @@ class DefaultMessagesController < ApplicationController
     respond_to do |format|
       if @default_message.save
         format.html { redirect_to default_messages_path, notice: 'Default message was successfully created.' }
-        format.json { render :show, status: :created, location: @default_message }
+        format.json { render :index, status: :created, location: @default_message }
       else
         format.html { render :new }
         format.json { render json: @default_message.errors, status: :unprocessable_entity }
@@ -45,7 +40,7 @@ class DefaultMessagesController < ApplicationController
     respond_to do |format|
       if @default_message.update(default_message_params)
         format.html { redirect_to default_messages_path, notice: 'Default message was successfully updated.' }
-        format.json { render :show, status: :ok, location: @default_message }
+        format.json { render :index, status: :ok, location: @default_message }
       else
         format.html { render :edit }
         format.json { render json: @default_message.errors, status: :unprocessable_entity }

@@ -8,26 +8,7 @@
       <%= link_to "Create New Goal", new_goal_path, class: "btn btn--rounded btn--green" %>
     </div>
   <% else %>
-    <div class="countdown">
-      <div class="countdown__card card">
-        <div class="timeBlock days">
-          <span class="time">{{ days }}</span>
-          <span class="unit">days</span>
-        </div>
-        <div class="timeBlock hours">
-          <span class="time">{{ hours }}</span>
-          <span class="unit">hours</span>
-        </div>
-        <div class="timeBlock minutes">
-          <span class="time">{{ minutes }}</span>
-          <span class="unit">minutes</span>
-        </div>
-        <div class="timeBlock seconds">
-          <span class="time">{{ seconds }}</span>
-          <span class="unit">seconds</span>
-        </div>
-      </div>
-    </div> <!-- /.countdown -->
+    <countdown :days="days" :hours="hours" :minutes="minutes" :seconds="seconds"></countdown>
     <% end %>
   <% unless @goal.complete? %>
     
@@ -43,12 +24,39 @@
 
   <%= link_to 'Edit', edit_goal_path(@goal) %> |
   <%= link_to 'All goals', goals_path %>
-  
+
+  <script type="text/x-template" id="countdownTemplate">
+    <div class="countdown">
+        <div class="countdown__card card">
+          <div class="timeBlock days">
+            <span class="time">{{ days }}</span>
+            <span class="unit">days</span>
+          </div>
+          <div class="timeBlock hours">
+            <span class="time">{{ hours }}</span>
+            <span class="unit">hours</span>
+          </div>
+          <div class="timeBlock minutes">
+            <span class="time">{{ minutes }}</span>
+            <span class="unit">minutes</span>
+          </div>
+          <div class="timeBlock seconds">
+            <span class="time">{{ seconds }}</span>
+            <span class="unit">seconds</span>
+          </div>
+        </div>
+      </div> <!-- /.countdown -->
+  </script>
 
 </div> <!-- /#app -->
 
 <script>
   Vue.prototype.$http = axios;
+
+  Vue.component('countdown', {
+    template: '#countdownTemplate',
+    props: ['days', 'hours', 'minutes', 'seconds']
+  });
 
   var app = new Vue({
     el: '#app',
