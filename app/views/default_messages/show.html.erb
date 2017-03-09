@@ -1,9 +1,11 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Message:</strong>
-  <%= @default_message.message %>
-</p>
-
-<%= link_to 'Edit', edit_default_message_path(@default_message) %> |
-<%= link_to 'Back', default_messages_path %>
+<div class="card">
+	<p id="notice"><%= notice %></p>
+	
+	<p>
+	  <strong>Message:</strong>
+	  <%= @default_message.message %>
+	</p>
+	
+	<%= link_to 'Edit', edit_default_message_path(@default_message) %> |
+	<%= link_to 'Back', default_messages_path %>
+</div>

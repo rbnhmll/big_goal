@@ -9,7 +9,7 @@
     </div>
   <% else %>
     <div class="countdown">
-      <div class="countdown__card">
+      <div class="countdown__card card">
         <div class="timeBlock days">
           <span class="time">{{ days }}</span>
           <span class="unit">days</span>
@@ -49,12 +49,6 @@
 
 <script>
   Vue.prototype.$http = axios;
-
-  Vue.component('countdown', {
-    template: '<p>Countdown</p>',
-    props: {
-    }
-  });
 
   var app = new Vue({
     el: '#app',
