@@ -22,12 +22,12 @@
   </div>
   <!-- Only show if goal exists in DB, ie: edit view -->
   <% if goal.persisted? %>
-    <div class="field">
+    <!-- <div class="field">
       <%= f.label :deadline_extended %>
       <%= f.check_box :deadline_extended %>
-    </div>
+    </div> -->
 
-    <div class="field">
+    <div class="field radio">
       <%= f.label :complete %>
       <%= f.check_box :complete %>
     </div>

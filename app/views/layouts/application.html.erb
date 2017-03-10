@@ -16,7 +16,11 @@
         <ul>
         <% if user_signed_in? %>
           <li><%= link_to('Home', root_path) %></li>
-          <li><%= link_to('Custom Messages', custom_messages_path) %></li>
+          <% if current_user.profile.include_custom_messages %>
+          <li>
+            <%= link_to('Custom Messages', custom_messages_path) %>
+          </li>
+          <% end %>
           
           <% if current_user.admin? %>
             <li><%= link_to('Default Messages', default_messages_path) %></li>
