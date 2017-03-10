@@ -1,6 +1,3 @@
-// 'Oxygen', sans-serif;
-// 'Oxygen Mono', monospace;
-
 // Breakpoints
 $small-screen: 400px;
 $medium-screen: 600px;
@@ -13,7 +10,7 @@ $heading-font-family: $base-font-family;
 $monospace: 'Oxygen Mono', monospace;
 
 // Font Sizes
-$base-font-size: 1em;
+$base-font-size: 62.5%; // 10px
 
 // Line height
 $base-line-height: 1.5;

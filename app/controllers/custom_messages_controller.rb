@@ -38,7 +38,7 @@ class CustomMessagesController < ApplicationController
   def update
     respond_to do |format|
       if @custom_message.update(custom_message_params)
-        format.html { redirect_to @custom_message, notice: 'Custom message was successfully updated.' }
+        format.html { redirect_to custom_messages_path, notice: 'Custom message was successfully updated.' }
         format.json { render :index, status: :ok, location: @custom_message }
       else
         format.html { render :edit }

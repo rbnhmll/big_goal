@@ -3,6 +3,7 @@ table {
   margin: $small-spacing 0;
   table-layout: fixed;
   width: 100%;
+  font-size: 1.6rem
 }
 
 th {
@@ -14,7 +15,7 @@ th {
 
 td {
   border-bottom: $base-border;
-  padding: $small-spacing 0;
+  padding: $small-spacing;
 }
 
 tr,
