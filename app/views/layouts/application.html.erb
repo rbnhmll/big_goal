@@ -26,7 +26,7 @@
             <li><%= link_to('Default Messages', default_messages_path) %></li>
           <% end %>
           
-          <li><%= link_to('Profile', profile_path(current_user.profile)) %></li>
+          <li><%= link_to('Profile', edit_profile_path(current_user.profile)) %></li>
           <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
         <% else %>
           <li><%= link_to('Login', new_user_session_path)  %></li>
