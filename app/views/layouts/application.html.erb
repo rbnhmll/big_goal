@@ -13,20 +13,22 @@
   <body>
     <header>
       <nav class="wrapper">
-
+        <ul>
         <% if user_signed_in? %>
-          <%= link_to('Home', root_path) %>
-          <%= link_to('Custom Messages', custom_messages_path) %>
+          <li><%= link_to('Home', root_path) %></li>
+          <li><%= link_to('Custom Messages', custom_messages_path) %></li>
           
           <% if current_user.admin? %>
-            <%= link_to('Default Messages', default_messages_path) %>
+            <li><%= link_to('Default Messages', default_messages_path) %></li>
           <% end %>
           
-          <%= link_to('Profile', profile_path(current_user.profile)) %>
-          <%= link_to('Logout User', destroy_user_session_path, :method => :delete) %>
+          <li><%= link_to('Profile', profile_path(current_user.profile)) %></li>
+          <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
         <% else %>
-          <%= link_to('Login User', new_user_session_path)  %> 
+          <li><%= link_to('Login', new_user_session_path)  %></li>
         <% end %>
+          
+        </ul>
       
       </nav>
     </header>
