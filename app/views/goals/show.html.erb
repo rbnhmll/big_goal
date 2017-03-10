@@ -22,8 +22,10 @@
     </div>
   <% end %>
 
-  <%= link_to 'Edit', edit_goal_path(@goal) %> |
-  <%= link_to 'All goals', goals_path %>
+  <div class="show__nav">
+    <%= link_to 'Edit', edit_goal_path(@goal) %> |
+    <%= link_to 'All goals', goals_path %>
+  </div>
 
   <!-- Template for countdown partial -->
   <%= render 'countdown_template' %>

@@ -5,7 +5,7 @@
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= render 'layouts/seo' %>
-    <link href="https://fonts.googleapis.com/css?family=Oxygen+Mono|Oxygen:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oxygen+Mono|Oxygen:300,400,700|Montserrat+Subrayada" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -38,10 +38,10 @@
       <%= yield %>
     </section>
 
-    <footer>
+    <!-- <footer>
       <div class="wrapper">
         <p>&copy; Robin Hamill <%= Date.today.year %></p>
       </div>
-    </footer>
+    </footer> -->
   </body>
 </html>

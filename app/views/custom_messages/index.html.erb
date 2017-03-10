@@ -3,7 +3,7 @@
   
   <h1>Custom Messages</h1>
   
-  <table>
+  <table class="messageTable">
     <thead>
       <tr>
         <th>Message</th>
@@ -24,5 +24,8 @@
   
   <br>
   
-  <%= link_to 'New Custom Message', new_custom_message_path, class: "btn btn--rounded btn--green" %>
+  <div class="actions">
+    <%= link_to 'New Custom Message', new_custom_message_path, class: "btn btn--rounded btn--green" %>
+  </div>
+  <%= link_to 'Back', goals_path %>
 </div>
