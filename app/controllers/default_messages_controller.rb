@@ -1,5 +1,4 @@
 class DefaultMessagesController < ApplicationController
-  include DefaultMessagesHelper
 
   before_action :authenticate_user!
   before_action :authenticate_is_admin!
