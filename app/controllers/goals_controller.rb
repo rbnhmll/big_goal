@@ -20,7 +20,7 @@ include ActionView::Helpers::DateHelper
       @goal.complete = true
     end
     respond_to do |format|
-      if @goal.save
+      if @goal.save!
         format.html { redirect_to @goal, notice: 'Yay, you did it!!.' }
         format.json { render :show, status: :ok, location: @goal }
       else
