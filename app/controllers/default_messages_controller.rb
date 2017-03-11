@@ -1,4 +1,6 @@
 class DefaultMessagesController < ApplicationController
+  include DefaultMessagesHelper
+
   before_action :authenticate_user!
   before_action :authenticate_is_admin!
   before_action :set_default_message, only: [:edit, :update, :destroy]
