@@ -24,7 +24,7 @@ class DefaultMessagesController < ApplicationController
     @default_message = DefaultMessage.new(default_message_params)
 
     respond_to do |format|
-      if @default_message.save!
+      if @default_message.save
         format.html { redirect_to default_messages_path, notice: 'Default message was successfully created.' }
         format.json { render :index, status: :created, location: @default_message }
       else
