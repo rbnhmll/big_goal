@@ -48,6 +48,7 @@ include ActionView::Helpers::DateHelper
     else
       @random_message = CustomMessage.where(user_id: current_user.id).order("RANDOM()").first
     end
+
   end
 
   # GET /goals/new

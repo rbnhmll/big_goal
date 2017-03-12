@@ -2,23 +2,21 @@
   
   <h1><%= @goal.goal_name %></h1>
 
-  <% if @goal.complete? %>
-    <h2>🎉 Congrats, you met your goal {{ name }}!! 🎉</h2>
-    <div>
-      <%= link_to "Create New Goal", new_goal_path, class: "btn btn--rounded btn--green" %>
-    </div>
-  <% else %>
-    <countdown :days="days" :hours="hours" :minutes="minutes" :seconds="seconds"></countdown>
-    <% end %>
   <% unless @goal.complete? %>
-    
+    <countdown :days="days" :hours="hours" :minutes="minutes" :seconds="seconds"></countdown>
+
     <% if @random_message.present? %>
-      <h2 class=""><%= @random_message.message %></h2>
+      <h2 class="motivationMessage"><%= @random_message.message %></h2>
     <% else %>
-      <h2>You got this, fam!</h2>
+      <h2 class="motivationMessage">You got this, fam!</h2>
     <% end %>
     <div>
       <%= link_to "Complete Goal", {:controller => "goals", :action => "complete_goal", :id => @goal.id}, class: "btn btn--rounded btn--green" %>
+    </div>
+  <% else %>
+    <h2>🎉 Congrats, you met your goal {{ name }}!! 🎉</h2>
+    <div>
+      <%= link_to "Create New Goal", new_goal_path, class: "btn btn--rounded btn--green" %>
     </div>
   <% end %>
 
@@ -82,17 +80,12 @@
       seconds: function() {
         return Math.floor(this.secondsLeft % 60);
       },
-      grad1: function() {
-        var r = Math.floor(this.hours * (255 / 24) );
-        var g = Math.floor(this.hours * (255 / 60) );
-        var b = Math.floor(this.hours * (255 / 60) );
-        return `RGB(${r},${g},${b})`
-      },
-      grad2: function() {
-        var r = Math.floor(this.hours * (255 / 24) );
-        var g = Math.floor(this.minutes * (255 / 60) );
-        var b = Math.floor(this.seconds * (255 / 60) );
-        return `RGBA(${r},${g},${b}, 0.5)`
+      outOfTime: function() {
+        if (this.secondsLeft <= 0) {
+          return true;
+        } else {
+          return false;
+        }
       }
     },
     mounted: function() {
