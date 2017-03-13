@@ -105,7 +105,6 @@
       this.getNow();
       this.$http.get(this.url)
       .then(function (response) {
-        console.log(response)
         var data = response.data
         var deadline = data.deadline;
         app.deadlineSecs = new Date(deadline).getTime();
