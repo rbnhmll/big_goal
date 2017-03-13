@@ -40,6 +40,7 @@ include ActionView::Helpers::DateHelper
   # GET /goals/1
   # GET /goals/1.json
   def show
+    @current_user = current_user
     if current_user.profile.include_custom_messages?
       default_messages = DefaultMessage.all
       custom_messages = CustomMessage.where(user_id: current_user.id)

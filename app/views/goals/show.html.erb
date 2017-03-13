@@ -105,24 +105,16 @@
       this.getNow();
       this.$http.get(this.url)
       .then(function (response) {
-        var data = response.data.deadline;
-        app.deadlineSecs = new Date(data).getTime();
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
-
-      var protocol = window.location.protocol;
-      var host = window.location.host;
-      var profile_id = <%= current_user.profile.id %>;
-      this.$http.get(`${protocol}//${host}/profiles/${profile_id}.json`)
-      .then(function (response) {
-        var name = response.data.name;
-        var nickname = response.data.nickname;
+        console.log(response)
+        var data = response.data
+        var deadline = data.deadline;
+        app.deadlineSecs = new Date(deadline).getTime();
+        var name = data.name;
+        var nickname = data.nickname;
         var names = [name];
         if (nickname !== "") {
           names.push(nickname);
-        }
+        };
         app.randomName(names);
       })
       .catch(function (error) {
