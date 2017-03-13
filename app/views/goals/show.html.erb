@@ -1,23 +1,31 @@
 <div id="app" v-cloak >
   
   <h1><%= @goal.goal_name %></h1>
-
   <% unless @goal.complete? %>
     <countdown :days="days" :hours="hours" :minutes="minutes" :seconds="seconds"></countdown>
-
-    <% if @random_message.present? %>
-      <h2 class="motivationMessage"><%= @random_message.message %></h2>
-    <% else %>
-      <h2 class="motivationMessage">You got this, fam!</h2>
-    <% end %>
-    <div>
+    <div v-if="!timeRemains && loaded">
+      <h2><span>⏰</span> Time's up? Did you complete it? <span>⏰</span></h2>
+      <div>
+        <%= link_to "Change Deadline", edit_goal_path(@goal), class: "btn btn--rounded btn--green" %>
+        <%= link_to "Complete Goal", {:controller => "goals", :action => "complete_goal", :id => @goal.id}, class: "btn btn--rounded btn--green" %>
+      </div>
+    </div>
+    <div v-else>
+      <% if @random_message.present? %>
+        <h2 class="motivationMessage"><%= @random_message.message %></h2>
+      <% else %>
+        <h2 class="motivationMessage">You got this, fam!</h2>
+      <% end %>
       <%= link_to "Complete Goal", {:controller => "goals", :action => "complete_goal", :id => @goal.id}, class: "btn btn--rounded btn--green" %>
     </div>
+    
   <% else %>
+
     <h2>🎉 Congrats, you met your goal {{ name }}!! 🎉</h2>
     <div>
       <%= link_to "Create New Goal", new_goal_path, class: "btn btn--rounded btn--green" %>
     </div>
+  
   <% end %>
 
   <div class="show__nav">
@@ -41,12 +49,13 @@
   var app = new Vue({
     el: '#app',
     data: {
-      nowSeconds: "",
+      nowSeconds: null,
       offset: new Date().getTimezoneOffset()*60*1000,
       secondsInDay: 86400,
       secondsInHour: 3600,
       deadlineSecs: 0,
       name: "",
+      loaded: false,
       url: window.location.href + ".json"
     },
     methods: {
@@ -80,10 +89,14 @@
       seconds: function() {
         return Math.floor(this.secondsLeft % 60);
       },
-      outOfTime: function() {
-        if (this.secondsLeft <= 0) {
+      timeRemains: function() {
+        if (this.secondsLeft > 0 && this.nowSeconds !== null) {
+          this.loaded = true;
           return true;
         } else {
+          setTimeout(function(){
+            app.loaded = true;
+          }, 500);
           return false;
         }
       }
