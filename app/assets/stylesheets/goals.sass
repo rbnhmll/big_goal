@@ -27,11 +27,32 @@
 		margin: 0.75em 0
 		font-family: 'Montserrat Subrayada', sans-serif
 
+.completion_emoji
+	text-align: center
+	span
+		font-size: 20px
+
 .currentGoal
-	background: rgba(#9BE3FF, 0.25)
+	background: rgba(#9BE3FF, 0.2)
+
+.times_up
+	background: rgba(#F95959, 0.2)
 
 .complete
-	background: rgba(#ACE66A, 0.25)
+	background: rgba(#ACE66A, 0.2)
+
+.alarm_clock
+	display: inline-block
+	color: rgba(#F95959, 1)
+	animation: swell 1s infinite
+
+@keyframes swell
+	0%
+		transform: scale(1)
+	50%
+		transform: scale(1.05)
+	100%
+		transform: scale(1)
 
 .time
 	font-family: $monospace

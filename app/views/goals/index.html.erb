@@ -15,6 +15,9 @@
     <tbody>
       <% @goals.each do |goal| %>
         <tr class="
+        <% if !time_remains(goal) %>
+          times_up
+        <% end %>
         <% if goal.current_goal? %>
           currentGoal
         <% end %>
@@ -24,7 +27,16 @@
         ">
           <td><%= goal.goal_name %></td>
           <td><%= goal.deadline.strftime("%A %B %d %Y@ %I:%M%p") %></td>
-          <td><% if goal.complete? %>👍<% else %>👎<% end %></td>
+          <td class="completion_emoji">
+            <% if goal.complete? %>
+              <span title="Goal Complete!">👍</span>
+            <% end %>
+            <% if time_remains(goal) && !goal.complete? %>
+              <span title="Time Remains">⏱</span>
+            <% elsif !time_remains(goal) && !goal.complete %>
+              <span title="Time's up!" class="alarm_clock">(( ⏰ ))</span>
+            <% end %>
+          </td>
           <td class="tableBtn"><%= link_to 'Show', goal, class: "btn" %></td>
           <td class="tableBtn"><%= link_to 'Edit', edit_goal_path(goal), class: "btn" %></td>
           <td class="tableBtn"><%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn--red" %></td>
