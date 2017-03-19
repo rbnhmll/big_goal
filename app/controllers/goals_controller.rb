@@ -101,6 +101,18 @@ include ActionView::Helpers::DateHelper
   # DELETE /goals/1.json
   def destroy
     @goal.destroy
+    all_goals = Goal.all.where(user_id: current_user.id)
+
+    c_goal = all_goals.where(current_goal: true)
+    c_goal.each do |c|
+      c.current_goal = false
+      c.save
+    end
+
+    last_goal = all_goals.last
+    last_goal.current_goal = true
+    last_goal.save
+
     respond_to do |format|
       format.html { redirect_to goals_url, notice: 'Goal was successfully destroyed.' }
       format.json { head :no_content }
