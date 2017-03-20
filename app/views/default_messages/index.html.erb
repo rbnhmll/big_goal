@@ -3,24 +3,19 @@
   
   <h1>Default Messages</h1>
   
-  <table class="messageTable">
-    <thead>
-      <tr>
-        <th>Message</th>
-        <th colspan="2"></th>
-      </tr>
-    </thead>
-  
-    <tbody>
+  <div class="messageTable">
+    <div class="flexTable">
       <% @default_messages.each do |default_message| %>
-        <tr>
-          <td><%= default_message.message %></td>
-          <td class="tableBtn"><%= link_to 'Edit', edit_default_message_path(default_message), class: "btn" %></td>
-          <td class="tableBtn"><%= link_to 'Delete', default_message, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn--red" %></td>
-        </tr>
+        <div class="flexRow">
+          <div><%= default_message.message %></div>
+          <div class="tableBtn">
+            <%= link_to 'Edit', edit_default_message_path(default_message), class: "btn" %>
+            <%= link_to 'Delete', default_message, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn--red" %>
+          </div>
+        </div>
       <% end %>
-    </tbody>
-  </table>
+    </div>
+  </div>
   
   <br>
   

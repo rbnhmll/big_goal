@@ -3,24 +3,19 @@
   
   <h1>Custom Messages</h1>
   
-  <table class="messageTable">
-    <thead>
-      <tr>
-        <th>Message</th>
-        <th colspan="2"></th>
-      </tr>
-    </thead>
-  
-    <tbody>
+  <div class="messageTable">
+    <div class="flexTable">
       <% @custom_messages.each do |custom_message| %>
-        <tr>
-          <td><%= custom_message.message %></td>
-          <td class="tableBtn"><%= link_to 'Edit', edit_custom_message_path(custom_message), class: "btn" %></td>
-          <td class="tableBtn"><%= link_to 'Delete', custom_message, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn--red" %></td>
-        </tr>
+        <div class="flexRow">
+          <div><%= custom_message.message %></div>
+          <div class="tableBtn">
+            <%= link_to 'Edit', edit_custom_message_path(custom_message), class: "btn" %>
+            <%= link_to 'Delete', custom_message, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn--red" %>
+          </div>
+        </div>
       <% end %>
-    </tbody>
-  </table>
+    </div>
+  </div>
   
   <br>
   
