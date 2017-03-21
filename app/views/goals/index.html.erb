@@ -26,7 +26,7 @@
             <% if time_remains(goal) && !goal.complete? %>
               <span title="Time Remains">⏱</span>
             <% elsif !time_remains(goal) && !goal.complete %>
-              <span title="Time's up!" class="alarm_clock">(( ⏰ ))</span>
+              <span title="Time's up!" class="alarm_clock">((&nbsp;⏰&nbsp;))</span>
             <% end %>
           </div>
           <div class="tableBtn">
