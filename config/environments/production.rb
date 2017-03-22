@@ -57,7 +57,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "big_goal_#{Rails.env}"
   config.action_mailer.perform_caching = false
 
-
+  # Define default URL options
   config.action_mailer.default_url_options = { host: 'https://biggoal.herokuapp.com' }
   
   # Ignore bad email addresses and do not raise email delivery errors.
